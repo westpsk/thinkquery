@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+<meta charset="UTF-8">
+<script src="/static/js/183.js"></script>
+<script src="/static/js/page.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+<title>tpl</title>
+<style>
+body {
+  color:#333;
+  background:#fff;
+}
+body,th,td {
+  font-family:arial;
+}
+html,body,ul,ol,li,dl,dd,h1,h2,h3,h4,h5,h6,pre,form,input,button,textarea,p,th,td {
+  margin:0;
+  padding:0;
+}
+p,form,ol,ul,li,h3,menu {
+  list-style:none;
+}
+table,img {
+  border:0;
+}
+img,object,select,input,textarea,button {
+  vertical-align:middle;
+}
+th {
+  text-align:left;
+}
+h1,h2,h3,h4,h5,h6,input,textarea,select,cite,em,i,b,strong,th{
+  font-size:100%;
+  font-style:normal;
+}
+ins,s,u,del {
+  text-decoration:none;
+}
+em,cite {
+  font-style:normal;
+}
+em {
+  color:#c00;
+}
+a {
+  color:#1024ee;
+}
+a em {
+  text-decoration:underline;
+}
+/*a:visited{color:#551A8B;}*/
+input,button,select{color:#333;}
+.result cite{color:#008000}
+
+
+/*通用颜色，文字*/
+.g-c-green{color:#00bc3e}
+.g-c-gray{color:#999}
+.g-c-dark{color:#666}
+.g-c-orange{color:#f60}
+.g-c-lightblue{color:#77c}
+.g-c-yellow{color:#ff9600}
+
+/*通用颜色，链接*/
+a.g-a-noline,.g-a-noline a{text-decoration:none}
+a.g-a-noline:hover,.g-a-noline a:hover{text-decoration:underline}
+a.g-a-dark:link,.g-a-dark a:link{color:#666;text-decoration:none}
+a.g-a-dark:hover,.g-a-dark a:hover{color:#00be3c;text-decoration:underline}
+a.g-a-lightblue:link,.g-a-lightblue a:link{color:#77c;text-decoration:none}
+a.g-a-lightblue:hover,.g-a-lightblue a:hover{color:#77c;text-decoration:underline}
+a.g-a-orange:link,.g-a-orange a:link{color:#ff9600;text-decoration:none}
+a.g-a-orange:hover,.g-a-orange a:hover{color:#ff9600;text-decoration:underline}
+
+/*截断*/
+.g-ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/*阴影*/
+.g-shadow{box-shadow:0 1px 1px rgba(0, 0 , 0, 0.06)}
+
+/*清除浮动*/
+.g-clearfix:after{display:block;clear:both;visibility:hidden;height:0;content:'';}
+.g-clearfix{zoom:1;}
+
+/*展开、收起*/
+.g-fold{}
+.g-unfold{}
+
+/*卡片*/
+.g-card{border:1px solid #e5e5e5;font-size:13px}
+.g-card .g-card-foot{height:36px;line-height:36px;padding:0 10px;border-top:1px solid #e5e5e5;}
+.g-card .g-card-foot-open,.g-card .g-card-foot-close{padding:0;}
+.g-card .g-card-foot-open a,.g-card .g-card-foot-close a{width:100%;height:100%;_height:25px;_padding-top:10px;display:block;color:#666;text-align:center;text-decoration:none}
+.g-card .g-card-foot-open a:hover,.g-card .g-card-foot-close a:hover{color:#00be3c}
+.g-card .g-card-foot .g-icon{margin-top:-3px}
+
+/*按钮*/
+.g-btn{border:0;border-radius:1px;text-decoration:none;text-align:center;display:inline-block;padding:0 10px;box-sizing:content-box;cursor:pointer;outline:none;overflow:hidden;vertical-align:middle;}
+input.g-btn,button.g-btn{line-height:20px;*padding:0 5px;}
+.g-btn-icon{display:inline-block;_padding-top:7px;}
+.g-btn-icon .g-icon{_margin-top:-3px;}
+.g-btn-green{height:24px;line-height:24px;border:1px solid #00be3c;color:#fff;background:#00be3c;font-size:12px;}
+.g-btn-green:hover{border-color:#33cb63;background:#33cb63}
+.g-btn-green:active{border-color:#00ab36;background:#00ab36}
+.g-btn-green:visited{color:#fff}
+.g-btn-green:disabled,.g-btn-green-disabled,.g-btn-green-disabled:hover,.g-btn-green-disabled:visited{border-color:#eee;color:#aaa;background:#fafafa}
+.g-btn-green2{height:24px;line-height:24px;border:1px solid #00be3c;color:#00be3c;background:#fff;font-size:12px;}
+.g-btn-green2:hover{border-color:#33cb63;color:#fff;background:#1AC550}
+.g-btn-green2:active{border-color:#00ab36;color:#fff;background:#00ab36}
+.g-btn-green2:visited{color:#00be3c}
+.g-btn-green2:disabled,.g-btn-green2-disabled,.g-btn-green2-disabled:hover,.g-btn-green2-disabled:visited{border-color:#eee;color:#aaa;background:#fafafa}
+.g-btn-green3{height:24px;line-height:24px;border:1px solid #ccc;color:#333;background:#fff;font-size:12px;}
+.g-btn-green3:hover{border-color:#00be3c;color:#00be3c;background:#fff}
+.g-btn-green3:active{border-color:#00ab36;color:#fff;background:#00ab36}
+.g-btn-green3:visited{color:#333}
+.g-btn-green3:disabled,.g-btn-green3-disabled,.g-btn-green3-disabled:hover,.g-btn-green3-disabled:visited{border-color:#eee;color:#aaa;background:#fafafa}
+
+
+/*通用，其他*/
+.g-padding{padding-left:10px;padding-right:10px;}
+
+/*通用，icon*/
+.g-icon{display:inline-block;overflow:hidden;vertical-align:middle;}
+.g-btn .g-icon{margin-right:5px;}
+.g-icon-arr-left,.g-icon-arr-right,.g-icon-arr-up,.g-icon-arr-down{background-image:url(http://p4.qhimg.com/t01054729d647fc0806.png);background-image:-webkit-image-set(url(http://p4.qhimg.com/t01054729d647fc0806.png) 1x,url(http://p0.qhimg.com/t01391279e4f7c1c44d.png) 2x)}
+.g-icon-arr-left{width:7px;height:12px;background-position:0 0}
+.g-icon-arr-right{width:7px;height:12px;background-position:-7px 0}
+.g-icon-arr-up{width:12px;height:7px;background-position:-1px -13px}
+.g-icon-arr-down{width:12px;height:7px;background-position:-1px -20px}
+a:hover .g-icon-arr-left{background-position:0 -28px}
+a:hover .g-icon-arr-right{background-position:-7px -28px}
+a:hover .g-icon-arr-up{background-position:-1px -41px}
+a:hover .g-icon-arr-down{background-position:-1px -48px}
+.g-icon-test{width:13px;height:13px;line-height:13px;background:#ccc;}
+
+/*通用，表格*/
+.g-table{width:100%;border-collapse:collapse;}
+.g-table th,.g-table td{height:35px;line-height:35px;font-size:13px;border-bottom:1px solid #f5f5f5;}
+.g-table thead th{font-weight:normal;color:#999;background:#fafafa}
+.g-table thead th:first-child,.g-table thead th.g-table-first{padding-left:20px;}
+.g-table tbody th{font-weight:normal;color:#999;padding-left:20px}
+.g-table-card{border:1px solid #e5e5e5;}
+
+/*通用，下拉菜单*/
+.g-menu{width:88px;font-size:12px;background:#fff;border:1px solid #e5e5e5;border-bottom:none;position:absolute;left:0;top:0;}
+.g-menu li{height:30px;line-height:30px;border-bottom:1px solid #e5e5e5;white-space:nowrap;}
+.g-menu li a{height:100%;padding:0 0 0 20px;color:#666;text-decoration:none;display:block;}
+.g-menu li a:hover{color:#fff;background:#00be3c;}
+
+/*通用，tip*/
+.g-tip{font-size:12px;padding:5px 10px;position:absolute;left:0;top:0;}
+.g-tip-default{color:#666;background:#fff;border:1px solid #e5e5e5;}
+.g-tip-warning{color:#ff9600;background:#fffbf5;border:1px solid #ffe6c4;}
+.g-tip-success{color:#00be3c;background:#f0fbf4;border:1px solid #c0eecf;}
+
+/*通用，tab*/
+.g-tab{height:34px;border:1px solid #e5e5e5;color:#666;background:#f8f8f8;}
+.g-tab li{min-width:44px;height:34px;line-height:34px;font-size:13px;text-align:center;border-right:1px solid #e5e5e5;padding:0 20px;float:left;cursor:pointer;}
+.g-tab .g-tab-active{border-top:2px solid #00be3c;position:relative;margin:-1px 0;color:#00be3c;background:#fff}
+
+/*通用，翻页*/
+.g-page{height:34px;font-size:13px;text-align:center;border:1px solid #e5e5e5;border-right:0;display:inline-block;white-space:nowrap;}
+.g-page a,.g-page strong{width:38px;height:34px;line-height:34px;display:inline-block;font-weight:normal;text-decoration:none;border-right:1px solid #e5e5e5;overflow:hidden;*vertical-align:middle;}
+.g-page a:hover{color:#00bc3e;background:#fafafa}
+.g-page .g-page-pre span,.g-page .g-page-nxt span{margin-top:-3px;*margin-top:10px!important;}
+.g-page strong span{opacity:.35}
+.g-card-foot .g-page{height:36px;border-top:0;border-bottom:0}
+.g-card-foot .g-page a,.g-card-foot .g-page strong{height:36px;line-height:36px;}
+
+.demo{margin:20px;}
+.demo dt{font-size:20px;font-weight:bold;border-bottom:1px solid #eee;padding:10px 0 5px;}
+.demo dd{width:540px;padding:20px;}
+#page{
+  display: none;
+}
+</style>
+</head>
+
+<body>
+<style>
+  .table{
+    width: 80%;
+    margin:0 auto;
+  }
+  .table caption {
+    line-height: 30px;
+    font-size: 20px;
+  } 
+  .tshow{}  
+  .thidden{display:none;}  
+</style>
+
+    <h3>onebox</h3>
+    <div class='js-view'>
+      <div class="mh-load-state js-mh-load">
+        <div class="mh-loading">
+          <i class="mh-ico-loading"></i>正在为您努力加载中...
+        </div>
+        <div class="mh-loaded">
+          矮油，没有找到符合条件的电影，快试试其他分类吧~
+        </div>
+      </div>
+      <%-include("ajax/query_list_ajax.html")-%>
+    </div>
+    <div id="page" style="text-align:center"></div>
+   
+<script>
+$('#page').haosouPager({
+  totalPage: 20,
+  currPage: 1,
+  callback: function(currPage) {
+    console.log("第一次生成",currPage);
+    var viewCont = $(".js-view"),
+        loadState = $(".js-mh-load");
+    $('.js-view').hide();
+    $.ajax({
+    url: '/home/query/list/page/' + currPage
+    })
+    .done(function(data){
+        if(data){
+          viewCont.html(data).show();
+          // pageTotal = $(".js-mh-page-num",context).data("page");
+          pageTotal = 1000;
+
+          if(pageTotal > 1){
+            /* 重新初始化翻页 */
+            pageCont.haosouPager({
+              totalPage: resetPageNum(pageTotal),/* 大于100页，重置页数 */
+              currPage: 1,
+              callback:function(currPage){
+                data = setAddInfo(currPage,pageTotal);
+                getAjax(data);
+              }
+            }).show();
+          }else{
+            // pageCont.hide();
+          }
+        }else{
+          loadState.addClass('mh-load-default');
+          // pageCont.hide();
+        }
+      })
+      .fail(function(){
+        loadState.addClass('mh-load-default');
+        // pageCont.hide();
+      })
+  }
+}).show();
+</script>
+</body>
+
+</html>

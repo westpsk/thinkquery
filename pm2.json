@@ -1,0 +1,16 @@
+{
+  "apps": [{
+    "name": "querytjs",
+    "script": "www/production.js",
+    "cwd": "/Users/pansongkui/workspace/360/fe/gitonebox/querytjs",
+    "exec_mode": "cluster",
+    "instances": 0,
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}

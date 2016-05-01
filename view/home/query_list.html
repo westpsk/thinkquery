@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table class="table table-striped ">
+      <caption>query-tpl</caption>
+        <% for(var i = 0, n = queryList.length; i < n; ++i) { %>
+              <% if(i==0) { %>
+              <tr>
+               <% for(var item in queryList[i]) { %>
+                <% if(item=='update_time'){continue;}%>
+                  <th>
+                  <%- item%>
+                  </th>
+                  <% } %>
+              </tr>
+          <% } %>
+          <tr>
+              <% for(var item in queryList[i]) { %>
+              <% if(item=='update_time'){continue;}%>
+              <td>
+              <%- queryList[i][item]%>
+              </td>
+              <% } %>
+            </td>
+          </tr>
+        <% } %>
+      </table>
+</body>
+</html>

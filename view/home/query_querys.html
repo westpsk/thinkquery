@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查看全部query</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/common.css">
+</head>
+<body>
+<div class='container'>
+  	<h3>
+  		显示所有query
+  	</h3>
+    <table class="table table-bordered" data-toggle="table">
+          <% for(var i = 0, n = querys.length; i < n; ++i) { %>
+              <% if(i==0) { %>
+              <tr>
+                <th>type</th>
+                <th>tpl</th>
+                <th>id</th>
+                <th>测试环境</th>
+                <th>线上环境</th>
+              </tr>
+            <% } %>
+            <tr>
+                <% for(var item in querys[i]) { %>
+                <% if(item=='update_time' || item=='id'){continue;}%>
+                <td>
+                <% if(item=='query'){%>
+                  <a href="http://intf.onebox.so.com/index.php?query=<%-querys[i][item]%>&ui=1&_port=8963&type=<%- querys[i]['type']%>&jsonpTest=on&_test=1&_xdebug=true" target="_blank"><%- querys[i][item]%></a></td><td>
+                  <a href="https://www.so.com/s?&src=test&q=<%-querys[i][item]%>" target="_blank"><%- querys[i][item]%></a>
+                <% }else{ %>
+                  <%- querys[i][item] %>
+                <% } %>
+                </td>
+                <% } %>
+              </td>
+            </tr>
+          <% } %>
+    </table>
+  </div>
+  <script src="/static/js/183.js"></script>
+  <script src="/static/js/common.js"></script>
+</body>
+</html>

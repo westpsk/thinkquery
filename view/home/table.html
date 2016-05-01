@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<link rel="stylesheet" type="text/css" href="../../www/static/css/bootstrap.min.css">
+</head>
+<body>
+<table class="table table-bordered" data-toggle="table">
+<tr>
+<td rowspan=4>famous</td><td rowspan=2>famous_tpl1</td><td>id1</td><td>query1</td></tr><tr><td>id2</td><td>query2</td></tr><tr><td rowspan=2>famous_tpl2</td><td>id3</td><td>query3</td></tr><tr><td>id4</td><td>query4</td></tr><tr>
+</tr>
+</table>
+
+	<h1>table</h1>
+	
+	<table class="table table-bordered" data-toggle="table">
+		<caption>table-test</caption>
+
+		<tr>
+			<th>type</th>
+			<th>tpl</th>
+			<th>sub_tpl</th>
+			<th>query</th>
+		</tr>
+	<%- content %>
+		<tr>
+			<td rowspan='4'>famous</td>
+			<td rowspan='2'>famous_tpl1</td>
+			<td>id1</td>
+			<td>query</td>
+		</tr>
+		<tr>
+			<td>id2</td>
+			<td>query</td>
+		</tr>
+		<tr>
+			<td rowspan='2'>famous_tpl2</td>
+			<td>id3</td>
+			<td>query</td>
+		</tr>
+		<tr>
+			<td>id4</td>
+			<td>query</td>
+		</tr>
+		<tr>
+			<td>music</td>
+			<td>music_tpl1</td>
+			<td>id1</td>
+			<td>query</td>
+		</tr>
+	</table>
+</body>
+</html>

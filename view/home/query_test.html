@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>onebox-query</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <!-- <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/static/css/common.css">
+</head>
+<body>
+<style>
+  .input-group{
+    display: inline-block;
+    width: 250px;
+  }
+  .form-control{
+    display: inline-block;
+    width: 200px;
+    margin-right: 15px;
+  }
+  .search{
+    margin:10px;
+  }
+  .btn-default{
+    margin-left: -10px;
+  }
+</style>
+ 	<h3>
+		-onebox-类型－query统计
+	</h3>
+  <div class='container'>
+    <div class="search">
+      <form action="/home/query/search" method="POST">
+          <label>通过类型选择:</label>
+          <input type="text" name="type" class="form-control">
+
+          <label>通过模版名称选择:</label>
+          <input type="text" name="tpl" class="form-control">
+          <button type="submit" class="btn btn-default">查询</button>
+      </form>
+    </div>
+    <div class='content'></div>
+  </div>
+  <script src="/static/js/183.js"></script>
+  <script src="/static/js/common.js"></script>
+  <script>
+      var send_list = [];
+      var res_data = '';
+      var queryJson = <%- JSON.stringify(queryJson) %>;
+      for(var s_type in queryJson){
+        var content = '';
+        var type_len = 0;
+        var tpl_id_obj = queryJson[s_type];
+        for(var s_tpl in tpl_id_obj){
+          var id_query_obj = tpl_id_obj[s_tpl];
+          var length = Object.keys(id_query_obj).length;
+          type_len += length;
+          content += '<td rowspan='+length+'>'+s_tpl+'</td>';
+          for(var s_id in id_query_obj){
+            content += '<td>'+s_id+'</td><td>'+id_query_obj[s_id]+'</td></tr>';
+          }
+        }
+        content = '<tr><td rowspan='+type_len+'>'+s_type+'</td>'+content;
+        res_data += content;
+      }
+      var appendTable = '<table class="table table-bordered" data-toggle="table">'+
+                        '<tr><th>type</th>'+
+                        '<th>tpl</th>'+
+                        '<th>ids</th>'+
+                        '<th>query</th></tr>'+res_data+'</table>';    
+      $('.content').html(appendTable);
+  </script>
+</body>
+</html>
