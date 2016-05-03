@@ -1,3 +1,4 @@
+My first thinkjs app!
 
 application created by [ThinkJS](http://www.thinkjs.org)
 
